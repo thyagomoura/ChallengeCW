@@ -4,7 +4,7 @@ class ManagersController < ApplicationController
   # GET /managers or /managers.json
   def index
     @managers = Manager.all
-    render json: @managers
+    render json: @managers, include: :players
   end
 
   # GET /managers/1 or /managers/1.json

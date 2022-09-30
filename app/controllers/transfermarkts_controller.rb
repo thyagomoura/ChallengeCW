@@ -4,7 +4,7 @@ class TransfermarktsController < ApplicationController
   # GET /transfermarkts or /transfermarkts.json
   def index
     @transfermarkts = Transfermarkt.all
-    render json: @transfermarkts
+    render json: @transfermarkts, include: :players
   end
 
   # GET /transfermarkts/1 or /transfermarkts/1.json
@@ -21,19 +21,19 @@ class TransfermarktsController < ApplicationController
   end
 
   # POST /transfermarkts or /transfermarkts.json
-  # def create
-  #   @transfermarkt = Transfermarkt.new(transfermarkt_params)
+  def create
+    @transfermarkt = Transfermarkt.new(transfermarkt_params)
 
-  #   respond_to do |format|
-  #     if @transfermarkt.save
-  #       format.html { redirect_to transfermarkt_url(@transfermarkt), notice: "Transfermarkt was successfully created." }
-  #       format.json { render :show, status: :created, location: @transfermarkt }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @transfermarkt.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @transfermarkt.save
+        format.html { redirect_to transfermarkt_url(@transfermarkt), notice: "Transfermarkt was successfully created." }
+        format.json { render :show, status: :created, location: @transfermarkt }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @transfermarkt.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /transfermarkts/1 or /transfermarkts/1.json
   def update

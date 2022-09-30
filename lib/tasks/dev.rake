@@ -1,6 +1,7 @@
 namespace :dev do
   desc "Setting up the environment and populating the database "
   task setup: :environment do
+    # loop to populate the database in Manager table 
     puts "Simulating of data logging in the database for manager started..."
     50.times do |i|
       Manager.create!(
@@ -12,6 +13,7 @@ namespace :dev do
     end
     puts "Successfully registered manager through registration simulation!"
 
+    # loop to populate the database in Transfermarkt table 
     puts "Simulating of data logging in the database for Transfermarkt started..."
     24.times do |i|
       Transfermarkt.create!(
@@ -23,6 +25,30 @@ namespace :dev do
       )
     end
     puts "Successfully registered Transfermarkt through registration simulation!"
+
+    # loop to populate the database in Player table 
+    puts "Simulating of data logging in the database for players started..."
+    Manager.all.each do |manager|
+      16.times do |i|
+        player = Player.create!(name: Faker::Sports::Football.player,position: Faker::Sports::Football.position,last_competition: Faker::Sports::Football.competition)
+        manager.players << player
+        manager.save!
+      end
+    end
+
+    Transfermarkt.all.each do |transfermarkt|
+      26.times do |i|
+        player = Player.create!(
+          name: Faker::Sports::Football.player,
+          position: Faker::Sports::Football.position,
+          last_competition: Faker::Sports::Football.competition
+        )
+        transfermarkt.players << player
+        transfermarkt.save!
+      end
+    end
+
+    puts "Successfully registered players through registration simulation!"
   end
 
 end

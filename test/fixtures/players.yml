@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  position: MyString
+  last_competition: MyString
+  manager: one
+  transfermarkt: one
+
+two:
+  name: MyString
+  position: MyString
+  last_competition: MyString
+  manager: two
+  transfermarkt: two
