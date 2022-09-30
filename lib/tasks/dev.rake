@@ -56,15 +56,11 @@ namespace :dev do
 
     # loop to populate the database in Contract table about players
     puts "Simulating of data logging in the database for contract started..."
-    Manager.all.each do |manager|
-      Player.all.each do |player|
-        contract = Contract.create!(
-          player_id: player.id,
-          work_contract: Faker::Blockchain::Aeternity.contract
-        )
-        player.contract << contract
-        player.save!
-      end
+    Player.all.each do |player|
+      puts player.id
+      contract = Contract.create!(
+        work_contract: Faker::Blockchain::Aeternity.contract
+      )
     end
     puts "Successfully registered contract through registration simulation!"
   end

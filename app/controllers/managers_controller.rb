@@ -6,7 +6,6 @@ class ManagersController < ApplicationController
     @managers = Manager.all
     render json: @managers, include: :players
   end
-
   # GET /managers/1 or /managers/1.json
   def show
   end
