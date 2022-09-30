@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_contract: MyString
+  player: one
+
+two:
+  work_contract: MyString
+  player: two
