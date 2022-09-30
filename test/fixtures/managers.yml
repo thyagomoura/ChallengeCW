@@ -3,7 +3,11 @@
 one:
   name: MyString
   email: MyString
+  nationality: MyString
+  workteam: MyString
 
 two:
   name: MyString
   email: MyString
+  nationality: MyString
+  workteam: MyString
