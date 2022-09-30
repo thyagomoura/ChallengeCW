@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  crypto: MyString
+  timezone: MyString
+
+two:
+  description: MyString
+  crypto: MyString
+  timezone: MyString

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @transfermarkt %>
+
+<div>
+  <%= link_to "Edit this transfermarkt", edit_transfermarkt_path(@transfermarkt) %> |
+  <%= link_to "Back to transfermarkts", transfermarkts_path %>
+
+  <%= button_to "Destroy this transfermarkt", @transfermarkt, method: :delete %>
+</div>

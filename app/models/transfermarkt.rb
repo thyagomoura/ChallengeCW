@@ -1,0 +1,2 @@
+class Transfermarkt < ApplicationRecord
+end

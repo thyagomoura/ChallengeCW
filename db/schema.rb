@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_021546) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_023712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_021546) do
     t.string "email"
     t.string "nationality"
     t.string "workteam"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transfermarkts", force: :cascade do |t|
+    t.string "description"
+    t.string "crypto"
+    t.string "timezone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

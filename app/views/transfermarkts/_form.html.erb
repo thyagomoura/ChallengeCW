@@ -1,0 +1,32 @@
+<%= form_with(model: transfermarkt) do |form| %>
+  <% if transfermarkt.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transfermarkt.errors.count, "error") %> prohibited this transfermarkt from being saved:</h2>
+
+      <ul>
+        <% transfermarkt.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :crypto, style: "display: block" %>
+    <%= form.text_field :crypto %>
+  </div>
+
+  <div>
+    <%= form.label :timezone, style: "display: block" %>
+    <%= form.text_field :timezone %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

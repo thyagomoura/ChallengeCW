@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Transfermarkts</h1>
+
+<div id="transfermarkts">
+  <% @transfermarkts.each do |transfermarkt| %>
+    <%= render transfermarkt %>
+    <p>
+      <%= link_to "Show this transfermarkt", transfermarkt %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New transfermarkt", new_transfermarkt_path %>
