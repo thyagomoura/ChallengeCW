@@ -4,6 +4,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :position
       t.string :last_competition
+      t.string :contract
       t.references :manager, null: true, foreign_key: true
       t.references :transfermarkt, null: true, foreign_key: true
 

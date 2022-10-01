@@ -33,7 +33,8 @@ namespace :dev do
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
-          last_competition: Faker::Sports::Football.competition
+          last_competition: Faker::Sports::Football.competition,
+          contract: Faker::Blockchain::Aeternity.contract
         )
         manager.players << player
         manager.save!
@@ -46,23 +47,14 @@ namespace :dev do
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
-          last_competition: Faker::Sports::Football.competition
+          last_competition: Faker::Sports::Football.competition,
+          contract: "Player available for trade"
         )
         transfermarkt.players << player
         transfermarkt.save!
       end
     end
     puts "Successfully registered players through registration simulation!"
-
-    # loop to populate the database in Contract table about players
-    puts "Simulating of data logging in the database for contract started..."
-    Player.all.each do |player|
-      puts player.id
-      contract = Contract.create!(
-        work_contract: Faker::Blockchain::Aeternity.contract
-      )
-    end
-    puts "Successfully registered contract through registration simulation!"
   end
 end
 
