@@ -8,6 +8,7 @@ class ManagersController < ApplicationController
   end
   # GET /managers/1 or /managers/1.json
   def show
+    render json: @manager, include: :players
   end
 
   # GET /managers/new
@@ -66,5 +67,6 @@ class ManagersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def manager_params
       params.require(:manager).permit(:name, :email, :nationality, :workteam)
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end

@@ -9,6 +9,7 @@ class TransfermarktsController < ApplicationController
 
   # GET /transfermarkts/1 or /transfermarkts/1.json
   def show
+    render json: @transfermarkt, include: :players
   end
 
   # GET /transfermarkts/new
@@ -67,5 +68,6 @@ class TransfermarktsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def transfermarkt_params
       params.require(:transfermarkt).permit(:description, :crypto, :timezone)
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end
