@@ -3,7 +3,7 @@ namespace :dev do
   task setup: :environment do
     # loop to populate the database in Manager table 
     puts "Simulating of data logging in the database for manager started..."
-    50.times do |i|
+    1.times do |i|
       Manager.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
@@ -15,7 +15,7 @@ namespace :dev do
 
     # loop to populate the database in Transfermarkt table 
     puts "Simulating of data logging in the database for Transfermarkt started..."
-    24.times do |i|
+    1.times do |i|
       Transfermarkt.create!(
         description: "Period during the year when a responsible person can transfer
                       players from another game team to his game team. This transfer is completed 
@@ -29,7 +29,7 @@ namespace :dev do
     # loop to populate the database in Player table about manager
     puts "Simulating of data logging in the database for players started..."
     Manager.all.each do |manager|
-      16.times do |i|
+      2.times do |i|
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
@@ -43,7 +43,7 @@ namespace :dev do
 
     # loop to populate the database in Player table about transfermarkt
     Transfermarkt.all.each do |transfermarkt|
-      26.times do |i|
+      5.times do |i|
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
