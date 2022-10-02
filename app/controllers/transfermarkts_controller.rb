@@ -72,8 +72,7 @@ class TransfermarktsController < ApplicationController
       params.require(:transfermarkt).permit(
         :description, 
         :crypto, 
-        :timezone,
-        players_attributes:[:id, :name, :position, :last_competition, :contract]
+        :timezone
       )
     end
 end
