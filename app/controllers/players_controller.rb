@@ -39,11 +39,17 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1 or /players/1.json
   def update
     respond_to do |format|
-      if @player.update(player_params)
-        format.html { redirect_to player_url(@player), notice: "Player was successfully updated." }
-        format.json { render :show, status: :ok, location: @player }
+      if @player.update(player_params) && @player.contract == "Player available for trade"
+        # ADD contract for player
+        @player.contract = Faker::Blockchain::Aeternity.contract
+        @player.save
+        format.json { render :show, status: :ok, location: @player, notice: "Player was successfully updated." }
+      elsif @player.update(player_params) && @player.contract.include?("ct_")
+        # withdraw a player's contract
+        @player.contract = "Player available for trade"
+        @player.save
+        format.json { render :show, status: :ok, location: @player, notice: "Player was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
     end
