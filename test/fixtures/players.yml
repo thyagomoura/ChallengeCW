@@ -4,6 +4,7 @@ one:
   name: MyString
   position: MyString
   last_competition: MyString
+  contract: MyString
   manager: one
   transfermarkt: one
 
@@ -11,5 +12,6 @@ two:
   name: MyString
   position: MyString
   last_competition: MyString
+  contract: MyString
   manager: two
   transfermarkt: two

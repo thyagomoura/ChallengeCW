@@ -66,7 +66,12 @@ class ManagersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def manager_params
-      params.require(:manager).permit(:name, :email, :nationality, :workteam)
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+      params.require(:manager).permit(
+        :name, 
+        :email, 
+        :nationality, 
+        :workteam,
+        players_attributes:[:id, :name, :position, :last_competition, :contract]
+      )
     end
 end

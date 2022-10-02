@@ -9,7 +9,7 @@ class TransfermarktsController < ApplicationController
 
   # GET /transfermarkts/1 or /transfermarkts/1.json
   def show
-    render json: @transfermarkt, include: :players
+    render json: @transfermarkts, include: :players
   end
 
   # GET /transfermarkts/new
@@ -24,6 +24,7 @@ class TransfermarktsController < ApplicationController
   # POST /transfermarkts or /transfermarkts.json
   def create
     @transfermarkt = Transfermarkt.new(transfermarkt_params)
+
     respond_to do |format|
       if @transfermarkt.save
         format.html { redirect_to transfermarkt_url(@transfermarkt), notice: "Transfermarkt was successfully created." }
@@ -40,7 +41,7 @@ class TransfermarktsController < ApplicationController
     respond_to do |format|
       if @transfermarkt.update(transfermarkt_params)
         format.html { redirect_to transfermarkt_url(@transfermarkt), notice: "Transfermarkt was successfully updated." }
-        format.json { render :show, include: :players, status: :ok, location: @transfermarkt }
+        format.json { render :show, status: :ok, location: @transfermarkt }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @transfermarkt.errors, status: :unprocessable_entity }
@@ -58,14 +59,6 @@ class TransfermarktsController < ApplicationController
     end
   end
 
-  def exchange(player_id, manager_id)
-    if player_id == 3
-      return true
-    else
-      return false
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transfermarkt
@@ -75,9 +68,10 @@ class TransfermarktsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def transfermarkt_params
       params.require(:transfermarkt).permit(
-        :description, :timezone,
-        {players_attributes: [:id, :name, :position]}
+        :description, 
+        :crypto, 
+        :timezone,
+        players_attributes:[:id, :name, :position, :last_competition, :contract]
       )
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end
