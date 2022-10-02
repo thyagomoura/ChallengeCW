@@ -7,12 +7,12 @@ class ManagersController < ApplicationController
 
     # Cache controll with etag
     if stale?(etag: @managers)
-      render json: @managers
+      render json: @managers, include: :players
     end
   end
   # GET /managers/1 or /managers/1.json
   def show
-    render json: @manager, root: true#, include: :players
+    render json: @manager, include: :players
   end
 
   # GET /managers/new

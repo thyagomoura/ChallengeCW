@@ -29,7 +29,7 @@ namespace :dev do
     # loop to populate the database in Player table about manager
     puts "Simulating of data logging in the database for players started..."
     Manager.all.each do |manager|
-      2.times do |i|
+      5.times do |i|
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
@@ -43,7 +43,7 @@ namespace :dev do
 
     # loop to populate the database in Player table about transfermarkt
     Transfermarkt.all.each do |transfermarkt|
-      5.times do |i|
+      10.times do |i|
         player = Player.create!(
           name: Faker::Sports::Football.player,
           position: Faker::Sports::Football.position,
