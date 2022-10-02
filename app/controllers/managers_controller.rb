@@ -4,7 +4,11 @@ class ManagersController < ApplicationController
   # GET /managers or /managers.json
   def index
     @managers = Manager.all
-    render json: @managers, include: :players
+
+    # Cache controll with etag
+    if stale?(etag: @managers)
+      render json: @managers, include: :players
+    end
   end
   # GET /managers/1 or /managers/1.json
   def show

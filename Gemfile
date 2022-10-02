@@ -30,9 +30,11 @@ gem "jbuilder"
 # Use postgresql
 gem 'pg', '~> 1.4', '>= 1.4.3'
 
-#Use for http request securance
+# Use for http request securance
 gem 'jwt', '~> 2.5'
 
+# Use for cache control
+gem 'rack-etag', '~> 3.0'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
