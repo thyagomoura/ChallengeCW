@@ -1,6 +1,8 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[ show edit update destroy ]
+  include ActionController::HttpAuthentication::Token::ControllerMethods
 
+  before_action :authenticate
   # GET /players or /players.json
   def index
     @players = Player.all
@@ -44,9 +46,10 @@ class PlayersController < ApplicationController
         @player.contract = Faker::Blockchain::Aeternity.contract
         @player.save
         format.json { render :show, status: :ok, location: @player, notice: "Player was successfully updated." }
-      elsif @player.update(player_params) && @player.contract.include?("ct_")
+      elsif @player.update(player_params) && @player.contract.include?("ct_") && !@player.transfermarkt_id.nil?
         # withdraw a player's contract
         @player.contract = "Player available for trade"
+        @player.manager_id = nil
         @player.save
         format.json { render :show, status: :ok, location: @player, notice: "Player was successfully updated." }
       else
@@ -74,5 +77,12 @@ class PlayersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def player_params
       params.require(:player).permit(:name, :position, :last_competition, :contract, :manager_id, :transfermarkt_id)
+    end
+
+    def authenticate
+      authenticate_or_request_with_http_token do |token, options|
+        hmac_secret = ''
+        JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
+      end
     end
 end

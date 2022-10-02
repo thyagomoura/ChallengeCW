@@ -4,9 +4,9 @@ class TransfermarktsController < ApplicationController
   # GET /transfermarkts or /transfermarkts.json
   def index
     @transfermarkts = Transfermarkt.all
+    
     render json: @transfermarkts, include: :players
   end
-
   # GET /transfermarkts/1 or /transfermarkts/1.json
   def show
     render json: @transfermarkts, include: :players
