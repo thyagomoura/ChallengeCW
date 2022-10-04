@@ -1,4 +1,4 @@
-# Cloudwalk Challenge - Player Transfermarkt
+# Backend challenge - Player Transfermarkt
 
 ### Application versions
 ```bash
