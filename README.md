@@ -24,6 +24,9 @@
 
 The application created has as a simulation a player transfermarkt, so a manager has players on his team as well as the transfermarkt has players available for transfer, so the manager needs to make a request to the player passing parameters and authentication that allow him to acquire the player of your interest, once acquired, the player receives a contract, in the same way, if the manager wants to place a player in the transfermarkt, it is necessary to pass parameters and authentication for a request to the player, so the player will be updated to the transfermarkt.
 
+#### About project delivery
+For this back end we need to make a structure that has the basis of a complete application, thinking about the security and quality of the project, so with this code it is possible to make requests for different routes, as well as having an authenticator to request contracts and test the code. bringing a tested solution, with quality and functionality to the code, as well as a creative idea.
+
 ### Commit messages
 ```bash
 Commit title
