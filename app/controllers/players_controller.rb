@@ -81,7 +81,7 @@ class PlayersController < ApplicationController
 
     def authenticate
       authenticate_or_request_with_http_token do |token, options|
-        hmac_secret = 'BE6375388567752043'
+        hmac_secret = Rails.application.credentials.dig(:JWT, :private_key)
         JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
       end
     end
